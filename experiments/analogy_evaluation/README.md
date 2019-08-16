@@ -1,7 +1,7 @@
 ## Modified word analogy task
 
 As discussed in [1]
->The word analogy task \citep{LevyG14} evaluates word embeddings based on their ability to find analogies like ``<img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{a}}" title="\Large \boldmath{w_{a}}" />  is to $w_b$ as to $w_c$ is to ?''. The scope of the task is to identify the correct word vector $w_d$ from the vocabulary $V$ that has the maximum cosine similarity to $w_b - w_a + w_c$ by evaluating:
+>The word analogy task \citep{LevyG14} evaluates word embeddings based on their ability to find analogies like ``<img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{a}}" title="\Large \boldmath{w_{a}}" />  is to <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{b}}" title="\Large \boldmath{w_{b}}" /> as to <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{c}}" title="\Large \boldmath{w_{c}}" /> is to ?''. The scope of the task is to identify the correct word vector <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{d}}" title="\Large \boldmath{w_{d}}" /> from the vocabulary <img src="https://latex.codecogs.com/svg.latex?\Large&space;\mathcal{V}" title="\Large \mathcal{V}" /> that has the maximum cosine similarity to $w_b - w_a + w_c$ by evaluating:
 \beq
 %analogy(w_a:w_b \longrightarrow w_c: ?) =
 \argmax_{w_d \in V} cos(w_b - w_a + w_c, w_d) \nonumber
