@@ -1,6 +1,7 @@
 ## Database Structure
 
-Due to GitHub's space restrictions, you can download the coo_matrix.csv [here](www.some_link.com)
+**Due to GitHub's space restrictions, you can download the coo_matrix.csv [here](www.some_link.com)**
+
 The co-cooccurrence matrix is stored in table `coo_matrix`  and has the following structure:
 
 #### Example:
