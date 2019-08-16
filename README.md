@@ -6,4 +6,9 @@ Ampazis, N., and Sakketou, F. (2019) *A Constrained Optimization Algorithm for L
 
 ## Requirements
 
+## Reproduce results
+Create a directory `embeddings` by running:
+```
+mkdir embeddings
+```
 
