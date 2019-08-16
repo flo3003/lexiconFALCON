@@ -30,4 +30,9 @@ Run
 
 This shell script selects all the embedding files created in directory `lexiconFALCON/embeddings` and runs the modified word analogy task.
 
+You can run the original analogy evaluation task with 
+```
+./analogy.sh
+```
+
 [1] Ampazis, N., and Sakketou, F. (2019) *A Constrained Optimization Algorithm for Learning GloVe Embeddings with Semantic Lexicons, Knowledge-based Systems (Under review)*
