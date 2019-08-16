@@ -2,8 +2,7 @@ import pandas as pd
 import os
 from nltk.corpus import stopwords
 import nltk.data
-import logging
-import numpy as np  # Make sure that numpy is imported
+import numpy as np
 from gensim.models import Word2Vec
 
 from sklearn.linear_model import LogisticRegression
@@ -22,11 +21,10 @@ from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 
 import data_io
 import os
-
 import csv
 import sys
 
-# ****** Define functions to create average word vectors
+#  Define functions to create average word vectors  #
 
 def makeFeatureVec(words, word_vectors, word_dict, num_features):
     # Function to average all of the word vectors in a given
@@ -38,24 +36,22 @@ def makeFeatureVec(words, word_vectors, word_dict, num_features):
     nwords = 0.
 
     # Loop over each word in the review and, if it is in the model's
-    # vocaublary, add its feature vector to the total
+    # vocabulary, add its feature vector to the total
     for word in words:
         if word in word_dict:
             nwords = nwords + 1.
             featureVec = np.add(featureVec,word_vectors[word_dict[word]])
 
     # Return 1 if the review cannot be classified
-    pipa = 0
+    exits = 0
     if (nwords==0):
-        #print words
-	#raw_input("Wait")
-        pipa = pipa + 1
+        exists = exists + 1
 
     # Divide the result by the number of words to get the average
     else:
         featureVec = np.divide(featureVec,nwords)
 
-    return pipa,featureVec
+    return exists, featureVec
 
 
 def getAvgFeatureVecs(reviews, word_vectors, word_dict, num_features):
@@ -69,23 +65,22 @@ def getAvgFeatureVecs(reviews, word_vectors, word_dict, num_features):
     reviewFeatureVecs = np.zeros((len(reviews),num_features),dtype="float32")
 
     # Loop through the reviews
-    overall_pipa = 0
+    overall_exists = 0
 
     for review in reviews:
 
        # Call the function (defined above) that makes average feature vectors
-       out_pipa,reviewFeatureVecs[counter] = makeFeatureVec(review, word_vectors, word_dict, num_features)
+       exists_output, reviewFeatureVecs[counter] = makeFeatureVec(review, word_vectors, word_dict, num_features)
 
-       # Increment the counter
-       if out_pipa == 0:
+       # Count how many reviews cannot be classified
+       if exists_output == 0:
            counter = counter + 1
 
-       overall_pipa = overall_pipa + out_pipa
+       overall_exists = overall_exists + out_pipa
 
     p = counter
 
     return p, reviewFeatureVecs
-
 
 def getCleanReviews(reviews):
     clean_reviews = []
@@ -96,20 +91,22 @@ def getCleanReviews(reviews):
 if __name__ == '__main__':
 
     # Read data from files
-    train = pd.read_csv( os.path.join(os.path.dirname(__file__), 'imdb_data', 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
-    test = pd.read_csv(os.path.join(os.path.dirname(__file__), 'imdb_data', 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
+    train = pd.read_csv( os.path.join(os.path.dirname(__file__), 'data', 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
+    test = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
 
     #Data Leak
     test["sentiment"] = test["id"].map(lambda x: 1 if int(x.strip('"').split("_")[1]) >= 5 else 0)
     y_test = test["sentiment"]
 
     vectors = sys.argv[1]
+
     (words, We) = data_io.getWordmap(vectors)
 
     num_features = We.shape[1]
 
     p, trainDataVecs = getAvgFeatureVecs( getCleanReviews(train), We, words, num_features )
     print('Train: {0} '.format(p))
+
     p, testDataVecs = getAvgFeatureVecs( getCleanReviews(test), We, words, num_features )
     print('Test: {0} '.format(p))
 
@@ -118,7 +115,6 @@ if __name__ == '__main__':
     print "Fitting a logistic regression model to labeled training data..."
     log_reg = log_reg.fit( trainDataVecs, train["sentiment"] )
 
-    # Test & extract results
     result = log_reg.predict( testDataVecs )
 
     y_pred = (result > 0.5)
