@@ -1,10 +1,6 @@
-
-|                         | *Sharding-JDBC* | *Sharding-Proxy*     | *Sharding-Sidecar* |
-| ----------------------- | --------------- | -------------------- | ------------------ |
-| Database                | Any             | MySQL/PostgreSQL     | MySQL/PostgreSQL   |
-| Connections Count Cost  | High            | Low                  | High               |
-| Supported Languages     | Java Only       | Any                  | Any                |
-| Performance             | Low loss        | Relatively High loss | Low loss           |
-| Decentralization        | Yes             | No                   | No                 |
-| Static Entry            | No              | Yes                  | No                 |
-
+| *word_a* | *word_b* | *cooccurrence* | *log_cooccurrence* |
+| -------- | -------- | -------------- | ------------------ |
+| 1        | 2        | 8              | 2.07944            |
+| 1        | 3        | 1.75           | 0.559616           |
+| 1        | 4        | 0.533333361148 | -0.628609          |
+| 1        | 5        | 0.25           | -1.38629           |
