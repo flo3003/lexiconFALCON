@@ -1,4 +1,4 @@
-#### Instructions:
+### Instructions:
 
 Create a directory `results` by running
 
@@ -6,7 +6,7 @@ Create a directory `results` by running
 mkdir results 
 ```
 
-##### Requirements:
+#### Requirements:
 
 You need to install the `glove-python` module by running:
 
