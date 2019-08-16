@@ -10,7 +10,7 @@ The co-cooccurrence matrix is stored in table `coo_matrix`  and has the followin
 | 1        | 4        | 0.533333361148 | -0.628609          |
 | 1        | 5        | 0.25           | -1.38629           |
 
-Table `word_mapping` maps each word to an Id and has the following structure:
+Table `word_mapping` maps each **word** to an **Id** and has the following structure:
 
 #### Example:
 | *word_id* | *name*   |
@@ -19,4 +19,14 @@ Table `word_mapping` maps each word to an Id and has the following structure:
 | 2         | high     |
 | 3         | is       |
 | 4         | a        |
+
+Each lexicon table (e.g. `wordnet`) contains words that are semantically related and has the following structure:
+
+#### Example:
+| *source_id* | *target_id* | *semantic_value* |
+| ----------- | ----------- | ---------------- |
+| 2           | 1292        | 1                |
+| 2           | 1529        | 1                |
+| 7           | 14141       | 1                |
+| 11          | 163         | 1                |
 
