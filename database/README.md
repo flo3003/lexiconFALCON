@@ -1,3 +1,8 @@
+## Database Structure
+
+The co-cooccurrence matrix is stored in table `coo_matrix`  and has the following structure:
+
+#### Example:
 | *word_a* | *word_b* | *cooccurrence* | *log_cooccurrence* |
 | -------- | -------- | -------------- | ------------------ |
 | 1        | 2        | 8              | 2.07944            |
