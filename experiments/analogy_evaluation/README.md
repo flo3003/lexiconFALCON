@@ -12,6 +12,8 @@ The original word analogy task is formulated in a way that there can be only one
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;cos(w_{mom}-w_{dad}+w_{grandfather}, w_{grandmother})" title="\Large cos(w_{mom}-w_{dad}+w_{grandfather}, w_{grandmother})" /> 
 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{dw}" title="\Large \boldmath{dw}" /> 
+
 ### Instructions:
 
 Clone the following [Github repo](https://github.com/flo3003/glove-python) in your home directory and run
