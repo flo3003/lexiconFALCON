@@ -56,16 +56,62 @@ Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directo
 cp ~/glove-python/random_initial_vectors.txt ~/lexiconFALCON/input_files
 ```
 
-Comment the lines 
+Go to the `lexiconFALCON` directory.
+```
+cd ~/lexiconFALCON
+```
+
+Create a directory `embeddings`
+```
+mkdir embeddings
+```
+
+Comment the lines `709-780` from `lexiconfalcon.c` and compile with
+```
+gcc -O3 lexiconfalcon.c -o lexiconfalcon -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
+```
+
+Edit the `run_algos.sh` script to select the correct parameters and run
+```
+./run_algos.sh
+```
 
 #### Start the training from pretrained embeddings:
 
-Download the pretrained embeddings in the `lexiconFALCON` directory. 
+Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directory by running:
+```
+cp ~/glove-python/random_initial_vectors.txt ~/lexiconFALCON/input_files
+```
 
+Go to the `lexiconFALCON` directory.
+```
+cd ~/lexiconFALCON
+```
 
-Create a directory `embeddings` by running:
+Create a directory `embeddings`
 ```
 mkdir embeddings
+```
+
+Download the pretrained embeddings in the `lexiconFALCON` directory. 
+
+Run
+```
+./map_ids.sh ~/glove-python/random_initial_vectors.txt pretrained_vectors.txt
+```
+
+This will create the following files:
+- `pretrained_vectors_weights.txt` which contains only the words' vectors
+- `mapped_ids.txt` which is the mapping file maps the indices of the vocabulary words to the indices of the corresponding words in the pretrained vector file. For example word "the" has index "3" in the vocabulary and index "56" in the pretrained vector file. The mapping file maps 3 to 56.
+
+Edit lines `706` and `727` in `lexiconfalcon.c` to read the correct pretrained vector file and mapping file. Compile with
+```
+gcc -O3 lexiconfalcon.c -o lexiconfalcon -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
+```
+
+Edit the `run_algos.sh` script to select the desirable parameters and run
+```
+./run_algos.sh
 ```
 
 
