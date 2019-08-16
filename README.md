@@ -32,3 +32,18 @@ pip install -e .
 
 Once these steps are completed, you are ready to go.
 
+
+
+Then run
+
+```
+ipython -i -- examples/get_database_files.py -c corpus.txt -o ~/LexiconFALCON/lexicons/lexicon.txt -d 100
+```
+
+The following will be constructed:
+- `coo_matrix.csv` is the co-occurrence matrix of `corpus.txt` 
+- `word_mapping.csv` is the mapping of each **word** to an **Id**
+- `lexicon.csv` contains the Ids of the words that are semantically related
+
+The directory `~/LexiconFALCON/lexicons/` contains the lexicons that were used in the paper. 
+
