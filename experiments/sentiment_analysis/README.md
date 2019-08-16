@@ -1,4 +1,4 @@
-#### Instructions:
+### Instructions:
 
 Create directories `results` and `data` by running
 
