@@ -20,19 +20,17 @@ python setup.py cythonize
 pip install -e .
 ```
 
-Once these steps are completed, you are ready to go.
+Then run
 
-
-Run
 ```
-./modified_analogy.sh
+ipython -i -- examples/get_database_files.py -c corpus.txt -o ~/LexiconFALCON/lexicons/lexicon.txt -d 100
 ```
 
-This shell script selects all the embedding files created in directory `lexiconFALCON/embeddings` and runs the modified word analogy task.
+The following will be constructed:
+- `coo_matrix.csv` is the co-occurrence matrix of `corpus.txt` 
+- `word_mapping.csv` is the mapping of each **word** to an **Id**
+- `lexicon.csv` contains the Ids of the words that are semantically related
 
-You can run the original analogy evaluation task with 
-```
-./analogy.sh
-```
+The directory `~/LexiconFALCON/lexicons/` contains the lexicons that were used in the paper. 
 
-[1] Ampazis, N., and Sakketou, F. (2019) *A Constrained Optimization Algorithm for Learning GloVe Embeddings with Semantic Lexicons, Knowledge-based Systems (Under review)*
+
