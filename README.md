@@ -10,6 +10,14 @@ Ampazis, N., and Sakketou, F. (2019) *A Constrained Optimization Algorithm for L
 
 Clone this repository in your home directory.
 
+### Instructions to reproduce the results of the paper:
+Due to GitHub's space restrictions, you need to download some additional files. Go to [lexiconFALCON/database/](https://github.com/flo3003/lexiconFALCON/tree/master/database) and [lexiconFALCON/input_files/](https://github.com/flo3003/lexiconFALCON/tree/master/input_files) and download the necessary files from the link provided.
+
+Edit the `run_algos.sh` script to select the correct parameters and run
+```
+./run_algos.sh
+```
+
 ### Instructions to create the input_files and database files:
 
 Clone the following [Github repo](https://github.com/flo3003/glove-python) in your home directory and run
