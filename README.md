@@ -49,7 +49,7 @@ ipython -i -- examples/get_database_files.py -l 1 -o ~/LexiconFALCON/lexicons/le
 
 The argument `-d` refers to the embedding dimensions. The default is 100.
 
-#### Start the training from random embeddings:
+#### To start the training from random embeddings:
 
 Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directory by running:
 ```
@@ -76,7 +76,7 @@ Edit the `run_algos.sh` script to select the correct parameters and run
 ./run_algos.sh
 ```
 
-#### Start the training from pretrained embeddings:
+#### To start the training from pretrained embeddings:
 
 Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directory by running:
 ```
@@ -97,7 +97,7 @@ Download the pretrained embeddings in the `lexiconFALCON` directory.
 
 Run
 ```
-./map_ids.sh ~/glove-python/random_initial_vectors.txt pretrained_vectors.txt
+./map_ids.sh  ~/lexiconFALCON/input_files pretrained_vectors.txt
 ```
 
 This will create the following files:
