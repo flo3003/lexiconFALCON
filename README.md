@@ -50,10 +50,11 @@ The following files will be constructed:
 
 The directory `~/LexiconFALCON/lexicons/` contains the lexicons that were used in the paper. 
 
-If you need to construct only the `lexicon.csv` and `random_initial_vectors.txt` from the saved corpus and glove models run
+If you need to construct only the `lexicon.csv` from the saved corpus and glove models run
 ```
 ipython -i -- examples/get_database_files.py -l 1 -o ~/LexiconFALCON/lexicons/lexicon.txt -d 100
 ```
+**Note that every time you run this command the `random_initial_vectors.txt` file will change.**
 
 The argument `-d` refers to the embedding dimensions. The default is 100.
 
