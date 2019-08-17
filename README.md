@@ -122,5 +122,15 @@ Edit the `run_algos.sh` script to select the desirable parameters and run
 ```
 ./run_algos.sh
 ```
+# GloVe
 
+This an implementation of the [GloVe](https://nlp.stanford.edu/projects/glove/) algorithm in C.
 
+### Instructions
+
+Follow the same instructions with the lexiconFALCON algorithm.
+
+Compile with 
+```
+gcc -O3 glove.c -o glove -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
+```
