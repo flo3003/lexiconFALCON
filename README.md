@@ -102,6 +102,8 @@ At the end of the training the embeddings will be saved as:
 embeddings/LF_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epochs*_final_error_*error*_*lexicon*.txt
 ```
 
+And the error history will be saved in `log_file.txt`
+
 If you want to start the training from pretrained embeddings:
 
 Download pretrained embeddings (e.g. [glove.6B](http://nlp.stanford.edu/data/glove.6B.zip)) in the `lexiconFALCON` directory and run
@@ -128,15 +130,28 @@ At the end of the training the embeddings will be saved as:
 embeddings/LF_pretrained_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epochs*_final_error_*error*_*lexicon*.txt
 ```
 
+And the error history will be saved in `log_file.txt`
+
 # GloVe
 
 This an implementation of the [GloVe](https://nlp.stanford.edu/projects/glove/) algorithm in C.
 
 ## Installation
 
-Follow the same instructions with the lexiconFALCON algorithm.
+Follow the same instructions with the lexiconFALCON algorithm and compile `glove.c` with 
 
-Compile with 
 ```
 gcc -O3 glove.c -o glove -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
 ```
+
+## Training
+
+Uncomment lines `21-22` from the `run_algos.sh` script.
+
+At the end of the training the embeddings will be saved as:
+
+```
+embeddings/GloVe_embeddings_lr_*learning_rate*_num_epochs_*number_of_epochs*_final_error_*error*.txt
+```
+
+And the error history will be saved in `log_glove.txt`
