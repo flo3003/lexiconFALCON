@@ -88,12 +88,6 @@ Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directo
 cp glove-python/random_initial_vectors.txt input_files
 ```
 
-Create a directory `embeddings`
-
-```
-mkdir embeddings
-```
-
 Compile `lexiconfalcon.c` with
 
 ```
