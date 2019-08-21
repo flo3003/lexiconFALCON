@@ -43,7 +43,7 @@ The argument `-d` refers to the embedding dimensions. The default is 100.
 
 `corpustextfile` can be any plain text file (with words being separated by space) with punctuation or not. `somelexiconfile` should have the format of the files in the lexicon directory of this repo.
 
-The following files will be constructed:
+The following files will be created:
 - `coo_matrix.csv` which contains the co-occurrence matrix of `corpustextfile` 
 - `word_mapping.csv` which contains the mapping of each **word** to an **Id**
 - `lexicon.csv` which contains the Ids of the words that are semantically related
