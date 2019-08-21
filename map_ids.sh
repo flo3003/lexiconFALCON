@@ -11,3 +11,6 @@ rm file1 file2
 #This produces the file which contains only the weights of the pretrained file
 fbname=$(basename "$2" .txt)
 cat $2 | awk '{for (i=2;i<=NF;i++) printf("%s ",$i); printf("\n");}' > $fbname"_weights.txt"
+
+cp $fbname"_weights.txt" input_files
+cp mapped_ids.txt input_files
