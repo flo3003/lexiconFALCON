@@ -72,6 +72,8 @@ Create the database schema by running
 mysql < LexiconFALCON_db.sql
 ```
 
+Edit the file `load_data.sql` and uncomment the line corresponding to your chosen lexicon.
+
 Load the csv files into the corresponding database tables by running the following command:
 
 ```
