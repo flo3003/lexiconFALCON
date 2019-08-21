@@ -1,3 +1,3 @@
 
-**Due to GitHub's space restrictions, you can download the `glove.6B.100d_weights.txt` [here](www.some_link.com) and the `random_initial_vectors.txt` [here](www.some_link.com) in order to reproduce the exact same results of the paper.** 
+**`random_initial_vectors.txt`, `pretrainedembeddingsfile_weights.txt` and `mapped_ids.txt` files will be saved here** 
 
