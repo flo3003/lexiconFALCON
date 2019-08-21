@@ -48,82 +48,70 @@ ipython -i -- examples/get_database_files.py -l 1 -o /path/to/somelexiconfile -d
 
 **Note that every time you run this command the `random_initial_vectors.txt` file will change.**
 
-
-
 ### Instructions to create a MySQL database and load the csv files:
-
-
-
-
-
-
-
-
-
-#### To start training from random embeddings:
-
-Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directory by running:
-```
-cp random_initial_vectors.txt ../lexiconFALCON/input_files
-```
 
 Change to the parent `lexiconFALCON` directory.
 ```
 cd ../lexiconFALCON
 ```
 
+Create the database schema by running
+
+```
+mysql < LexiconFALCON_db.sql
+```
+
+Load the csv files into the corresponding database tables by running the following command:
+
+```
+mysql < load_data.sql
+```
+
+
+#### To start training:
+
+Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directory by running:
+```
+cp glove-python/random_initial_vectors.txt input_files
+```
+
 Create a directory `embeddings`
 ```
 mkdir embeddings
 ```
 
-Comment the lines `709-780` from `lexiconfalcon.c` and compile with
+Compile `lexiconfalcon.c` with
+
 ```
 gcc -O3 lexiconfalcon.c -o lexiconfalcon -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
 ```
 
 Edit the `run_algos.sh` script to select the correct parameters and run
+
 ```
 ./run_algos.sh
 ```
 
-#### To start the training from pretrained embeddings:
-
-Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directory by running:
-```
-cp ~/glove-python/random_initial_vectors.txt ~/lexiconFALCON/input_files
-```
-
-Go to the `lexiconFALCON` directory.
-```
-cd ~/lexiconFALCON
-```
-
-Create a directory `embeddings`
-```
-mkdir embeddings
-```
+If you want to start the training from pretrained embeddings:
 
 Download the pretrained embeddings in the `lexiconFALCON` directory. 
 
 Run
 ```
-./map_ids.sh  ~/lexiconFALCON/input_files pretrained_vectors.txt
+./map_ids.sh  input_files/random_initial_vectors.txt pretrained_embeddings_file.txt
 ```
 
 This will create the following files:
-- `pretrained_vectors_weights.txt` which contains only the words' vectors
+- `pretrained_embeddings_file_weights.txt` which contains only the words' vectors
 - `mapped_ids.txt` which is the mapping file maps the indices of the vocabulary words to the indices of the corresponding words in the pretrained vector file. For example word "the" has index "3" in the vocabulary and index "56" in the pretrained vector file. The mapping file maps 3 to 56.
 
-Edit lines `706` and `727` in `lexiconfalcon.c` to read the correct pretrained vector file and mapping file. Compile with
+Edit the `run_algos_pretrained.sh` script to select the desirable parameters. Note that the parameter `emb_file` in `run_algos_pretrained.sh` should be the `pretrained_embeddings_file_weights.txt` file.
+
+Run
 ```
-gcc -O3 lexiconfalcon.c -o lexiconfalcon -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
+./run_algos_pretrained.sh
 ```
 
-Edit the `run_algos.sh` script to select the desirable parameters and run
-```
-./run_algos.sh
-```
 # GloVe
 
 This an implementation of the [GloVe](https://nlp.stanford.edu/projects/glove/) algorithm in C.
