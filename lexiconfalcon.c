@@ -707,75 +707,75 @@ int initialize_weights(int TOTAL_FEATURES) {
   fclose(infile);
 
   if (path_to_pretrained) {
-  
-  printf("Using pretrained embeddings from %s...\n", path_to_pretrained);
-  /* ------------------------------------------------------------------------- */
-  // Store all the pretrained vectors
 
-  infile=fopen(path_to_pretrained,"r");
+    printf("Using pretrained embeddings from %s...\n", path_to_pretrained);
+    /* ------------------------------------------------------------------------- */
+    // Store all the pretrained vectors
 
-  for (i=0; i<TOTAL_PRIORS; i++) {
-    for (f=0; f<TOTAL_FEATURES; f++) {
-      fscanf(infile,"%lf", &prior_embeddings[i][f]);
+    infile=fopen(path_to_pretrained,"r");
+
+    for (i=0; i<TOTAL_PRIORS; i++) {
+      for (f=0; f<TOTAL_FEATURES; f++) {
+        fscanf(infile,"%lf", &prior_embeddings[i][f]);
+      }
     }
-  }
 
-  fclose(infile);
+    fclose(infile);
 
-  /* ------------------------------------------------------------------------- */
-  // The mapping file maps the indices of the vocabulary words to the indices of the corresponding words in the pretrained vector file for example word "the" has index "3" in the vocabulary and index "56" in the pretrained vector file. The mapping file maps 3 to 56.
+    /* ------------------------------------------------------------------------- */
+    // The mapping file maps the indices of the vocabulary words to the indices of the corresponding words in the pretrained vector file for example word "the" has index "3" in the vocabulary and index "56" in the pretrained vector file. The mapping file maps 3 to 56.
 
-  int num_lines;
-  char *mapping_file="input_files/mapped_ids.txt";
-  int **mapping_array;
-  
-  num_lines = get_num_lines(mapping_file);
+    int num_lines;
+    char *mapping_file="input_files/mapped_ids.txt";
+    int **mapping_array;
 
-  mapping_array = ( int** )malloc(num_lines * sizeof(int *));
+    num_lines = get_num_lines(mapping_file);
 
-  if(mapping_array == NULL)
-  {
-    fprintf(stderr, "out of memory for mapping array\n");
-    exit(-1);
-  }
+    mapping_array = ( int** )malloc(num_lines * sizeof(int *));
 
-  for(i = 0; i < num_lines; i++)
-  {
-    mapping_array[i] = ( int* )malloc(2 * sizeof(int));
-    if(mapping_array[i] == NULL)
+    if(mapping_array == NULL)
     {
-      fprintf(stderr, "out of memory for mapping array row\n");
+      fprintf(stderr, "out of memory for mapping array\n");
       exit(-1);
     }
-  }
 
-  if (NULL == (infile = fopen(mapping_file, "r"))) {
-    perror(mapping_file);
-    return EXIT_FAILURE;
-  }
-
-
-  for (i=0; i<num_lines; i++) {
-    for (f=0; f<2; f++) {
-      fscanf(infile,"%d", &mapping_array[i][f]);
+    for(i = 0; i < num_lines; i++)
+    {
+      mapping_array[i] = ( int* )malloc(2 * sizeof(int));
+      if(mapping_array[i] == NULL)
+      {
+        fprintf(stderr, "out of memory for mapping array row\n");
+        exit(-1);
+      }
     }
 
-  }
-
-  fclose(infile);
-
-  /* ------------------------------------------------------------------------- */
-  // Initialize the words of the vocabulary to the pretrained vectors
-
-  for (i=0; i<num_lines; i++) {
-    for (f=0; f<TOTAL_FEATURES; f++) {
-      word_b_features[ mapping_array[i][0] -1 ][f] = prior_embeddings[ mapping_array[i][1] -1 ][f];
-      word_a_features[ mapping_array[i][0] -1 ][f] = prior_embeddings[ mapping_array[i][1] -1 ][f];
+    if (NULL == (infile = fopen(mapping_file, "r"))) {
+      perror(mapping_file);
+      return EXIT_FAILURE;
     }
 
-  }
 
-  free((void **)prior_embeddings);
+    for (i=0; i<num_lines; i++) {
+      for (f=0; f<2; f++) {
+        fscanf(infile,"%d", &mapping_array[i][f]);
+      }
+
+    }
+
+    fclose(infile);
+
+    /* ------------------------------------------------------------------------- */
+    // Initialize the words of the vocabulary to the pretrained vectors
+
+    for (i=0; i<num_lines; i++) {
+      for (f=0; f<TOTAL_FEATURES; f++) {
+        word_b_features[ mapping_array[i][0] -1 ][f] = prior_embeddings[ mapping_array[i][1] -1 ][f];
+        word_a_features[ mapping_array[i][0] -1 ][f] = prior_embeddings[ mapping_array[i][1] -1 ][f];
+      }
+
+    }
+
+    free((void **)prior_embeddings);
 
   } //If pretrained embeddings exist
 
@@ -1045,7 +1045,11 @@ void save_new_features_files (int TOTAL_FEATURES, double sq1) {
 
 
   strcpy (filetype, ".txt");
-  sprintf(filename, "LF_embeddings_dP_%g_xi_%g_num_epochs_%d_final_error_%lf_%s", dP, ksi, g_cnt, sq1, lexicon);
+  if (path_to_pretrained) {
+    sprintf(filename, "LF_pretrained_embeddings_dP_%g_xi_%g_num_epochs_%d_final_error_%lf_%s", dP, ksi, g_cnt, sq1, lexicon);
+  } else {
+    sprintf(filename, "LF_embeddings_dP_%g_xi_%g_num_epochs_%d_final_error_%lf_%s", dP, ksi, g_cnt, sq1, lexicon);
+  }
   strcat (folder, filename);
   strcat (folder, filetype);
 
