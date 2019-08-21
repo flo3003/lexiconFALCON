@@ -8,13 +8,23 @@ Ampazis, N., and Sakketou, F. (2019) *A Constrained Optimization Algorithm for L
 
 Obviously first clone this repository.
 
+```
+git clone https://github.com/flo3003/lexiconFALCON.git
+```
+
 Change into the cloned lexiconFALCON directory:
 
 ```
 cd lexiconFALCON
 ```
 
-Now you will need to clone the following [Github repo](https://github.com/flo3003/glove-python) in lexiconFALCON's directory, and then run the following commands in order:
+Now you will need to clone the following [Github repo](https://github.com/flo3003/glove-python) in lexiconFALCON's directory
+
+```
+git clone https://github.com/flo3003/glove-python.git
+```
+
+Then run the following commands in order:
 
 ```
 cd glove-python
@@ -27,7 +37,7 @@ pip install -e .
 In the glove-python directory run
 
 ```
-python -- examples/get_database_files.py -c /path/to/some/corpustextfile -o /path/to/somelexiconfile -d 100
+python examples/get_database_files.py -c /path/to/some/corpustextfile -o /path/to/somelexiconfile -d 100
 ```
 The argument `-d` refers to the embedding dimensions. The default is 100. 
 
@@ -43,7 +53,7 @@ The following files will be constructed:
 If you need to construct **only** the `lexicon.csv` file from previously saved corpus and glove models then run
 
 ```
-python -- examples/get_database_files.py -l 1 -o /path/to/somelexiconfile -d 100
+python examples/get_database_files.py -l 1 -o /path/to/somelexiconfile -d 100
 ```
 
 *Note that every time you run this command the `random_initial_vectors.txt` file will change.*
