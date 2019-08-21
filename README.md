@@ -14,7 +14,7 @@ Change into the cloned lexiconFALCON directory:
 cd lexiconFALCON
 ```
 
-Now you will need to clone the following [Github repo](https://github.com/flo3003/glove-python) in lexiconFALCON's directory, and then to run the following commands in order:
+Now you will need to clone the following [Github repo](https://github.com/flo3003/glove-python) in lexiconFALCON's directory, and then run the following commands in order:
 
 ```
 cd glove-python
@@ -51,6 +51,7 @@ python -- examples/get_database_files.py -l 1 -o /path/to/somelexiconfile -d 100
 ### Instructions to create the MySQL database schema and load the csv files:
 
 Change to the parent `lexiconFALCON` directory.
+
 ```
 cd ../lexiconFALCON
 ```
@@ -67,15 +68,18 @@ Load the csv files into the corresponding database tables by running the followi
 mysql < load_data.sql
 ```
 
+## Training
 
-#### To start training:
+To start training:
 
 Copy the `random_initial_vectors.txt` in the `lexiconFALCON/input_files` directory by issuing:
+
 ```
 cp glove-python/random_initial_vectors.txt input_files
 ```
 
 Create a directory `embeddings`
+
 ```
 mkdir embeddings
 ```
@@ -92,9 +96,16 @@ Edit the `run_algos.sh` script to fill in the parameter values and run
 ./run_algos.sh
 ```
 
+At the end of the training the embeddings will be saved as:
+
+```
+embeddings/LF_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epochs*_final_error_*error*_*lexicon*.txt
+```
+
 If you want to start the training from pretrained embeddings:
 
-Download pretrained embeddings (e.g. [glove.6B](http://nlp.stanford.edu/data/glove.6B.zip) in the `lexiconFALCON` directory and run
+Download pretrained embeddings (e.g. [glove.6B](http://nlp.stanford.edu/data/glove.6B.zip)) in the `lexiconFALCON` directory and run
+
 ```
 ./map_ids.sh  input_files/random_initial_vectors.txt pretrainedembeddingsfile
 ```
@@ -104,16 +115,24 @@ This will create the following files:
 - `input_files/mapped_ids.txt` which maps the indices of the vocabulary words to the indices of the corresponding words in the pretrained vector file. For example word "the" has index "3" in the vocabulary and index "56" in the pretrained vector file. The mapping file maps 3 to 56.
 
 Edit the `run_algos_pretrained.sh` script to fill in the parameter values, and run
+
 ```
 ./run_algos_pretrained.sh
 ```
+
 *Note that the parameter `emb_file` in `run_algos_pretrained.sh` should be the `input_files/pretrainedembeddingsfile_weights.txt` file.*
+
+At the end of the training the embeddings will be saved as:
+
+```
+embeddings/LF_pretrained_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epochs*_final_error_*error*_*lexicon*.txt
+```
 
 # GloVe
 
 This an implementation of the [GloVe](https://nlp.stanford.edu/projects/glove/) algorithm in C.
 
-### Instructions
+## Installation
 
 Follow the same instructions with the lexiconFALCON algorithm.
 
