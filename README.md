@@ -98,8 +98,9 @@ Edit the `run_algos.sh` script to fill in the parameter values and run
 
 At the end of the training the embeddings will be saved as:
 
+```
 embeddings/LF_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epochs*_final_error_*error*_*lexicon*.txt
-
+```
 
 If you want to start the training from pretrained embeddings:
 
