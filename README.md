@@ -118,7 +118,8 @@ If you want to start the training from pretrained embeddings:
 Download pretrained embeddings (e.g. [glove.6B](http://nlp.stanford.edu/data/glove.6B.zip)) in the `lexiconFALCON` directory and run
 
 ```
-./map_ids.sh  input_files/random_initial_vectors.txt pretrainedembeddingsfile
+chmod +x map_ids.sh
+./map_ids.sh pretrainedembeddingsfile
 ```
 
 This will create the following files:
