@@ -177,6 +177,17 @@ Now that you have trained your model you can run the analogy evaluation tasks by
 cd experiments/analogy_evaluation
 ```
 
+#### Original Analogy Evaluation Task
+
+Run the original analogy evalution task with:
+
+```
+chmod +x analogy.sh
+./analogy.sh
+```
+
+This script will run experiments for all the embedding files in the `lexiconFALCON/embeddings/` directory. The results will be saved in `analogy` file.
+
 #### Modified Analogy Evaluation Task
 
 As discussed in [1]
@@ -193,17 +204,6 @@ chmod +x modified_analogy.sh
 This script will run experiments for all the embedding files in the `lexiconFALCON/embeddings/` directory. The results will be saved in `modified_analogy` file.
 
 
-#### Original Analogy Evaluation Task
-
-Run the original analogy evalution task with:
-
-```
-chmod +x analogy.sh
-./analogy.sh
-```
-
-This script will run experiments for all the embedding files in the `lexiconFALCON/embeddings/` directory. The results will be saved in `analogy` file.
-
 ### Sentiment Analysis 
 
 Now that you have trained your model you can run the sentiment analysis by changing into the `sentiment_analysis` directory:
@@ -214,9 +214,9 @@ cd experiments/sentiment_analysis
 
 **Edit** lines `94-95` of `sentiment_analysis.py` and select the correct directory for your train and test files.
 
-*Note that this code has minor differences with [sentiment-analysis-using-word2vec](https://www.kaggle.com/varun08/sentiment-analysis-using-word2vec) from [kaggle](https://www.kaggle.com/)*
+*Note that in our experiments we used the IMDB sentiment analysis dataset found [here](https://www.kaggle.com/c/word2vec-nlp-tutorial/data)*
 
-Now run sentiment analysis task with:
+Now you can run the sentiment analysis task with:
 
 ```
 chmod +x run_sentiment.sh
