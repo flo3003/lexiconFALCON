@@ -72,7 +72,7 @@ Create the database schema by running
 mysql < LexiconFALCON_db.sql
 ```
 
-Edit the file `load_data.sql` and uncomment the line corresponding to your chosen lexicon.
+**Edit** the file `load_data.sql` and uncomment the line corresponding to your chosen lexicon.
 
 Load the csv files into the corresponding database tables by running the following command:
 
@@ -96,7 +96,7 @@ Compile `lexiconfalcon.c` with
 gcc -O3 lexiconfalcon.c -o lexiconfalcon -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
 ```
 
-Edit the `run_algos.sh` script to fill in the parameter values and run
+**Edit** the `run_algos.sh` script to fill in the parameter values and run
 
 ```
 ./run_algos.sh
