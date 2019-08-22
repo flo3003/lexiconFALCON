@@ -166,3 +166,79 @@ embeddings/GloVe_embeddings_lr_*learning_rate*_num_epochs_*number_of_epochs*_fin
 ```
 
 And the error history will be saved in `log_glove.txt`
+
+## How to run the experiments
+
+### Analogy Evaluation 
+
+Now that you have trained your model you can run the analogy evaluation tasks by changing into the `analogy_evaluation` directory:
+
+```
+cd experiments/analogy_evaluation
+```
+
+#### Modified Analogy Evaluation Task
+
+As discussed in [1]
+>The word analogy task [(Levy & Goldberg, 2014)](https://www.aclweb.org/anthology/W14-1618) evaluates word embeddings based on their ability to find analogies like ``<img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{a}}" title="\Large \boldmath{w_{a}}" />  is to <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{b}}" title="\Large \boldmath{w_{b}}" /> as to <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{c}}" title="\Large \boldmath{w_{c}}" /> is to ?''. The scope of the task is to identify the correct word vector <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{d}}" title="\Large \boldmath{w_{d}}" /> from the vocabulary <img src="https://latex.codecogs.com/svg.latex?\Large&space;\mathcal{V}" title="\Large \mathcal{V}" /> that has the maximum cosine similarity to  <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{b}}" title="\Large \boldmath{w_{b}}" /> - <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{a}}" title="\Large \boldmath{w_{a}}" /> + <img src="https://latex.codecogs.com/svg.latex?\Large&space;\boldmath{w_{c}}" title="\Large \boldmath{w_{c}}" />
+The original word analogy task is formulated in a way that there can be only one correct answer for each question. For example, the expected answer for the question *“dad is to mom as grandfather is to ?”* in the dataset is *“grandmother”* therefore we aim for the following quantity <img src="https://latex.codecogs.com/svg.latex?\Large&space;cos(\boldmath{w_{mom}}-\boldmath{w_{dad}}+\boldmath{w_{grandfather}},\boldmath{w_{grandmother}})" title="\Large cos(\boldmath{w_{mom}}-\boldmath{w_{dad}}+\boldmath{w_{grandfather}},\boldmath{w_{grandmother}})" /> to be maximum. If <img src="https://latex.codecogs.com/svg.latex?\Large&space;cos(\boldmath{w_{mom}}-\boldmath{w_{dad}}+\boldmath{w_{grandfather}},\boldmath{w_{grandma}})" title="\Large cos(\boldmath{w_{mom}}-\boldmath{w_{dad}}+\boldmath{w_{grandfather}},\boldmath{w_{grandma}})" /> > <img src="https://latex.codecogs.com/svg.latex?\Large&space;cos(\boldmath{w_{mom}}-\boldmath{w_{dad}}+\boldmath{w_{grandfather}},\boldmath{w_{grandmother}})" title="\Large cos(\boldmath{w_{mom}}-\boldmath{w_{dad}}+\boldmath{w_{grandfather}},\boldmath{w_{grandmother}})" /> then the answer *“grandma”* to the question would be considered incorrect. However, we can exploit the information provided by the semantic lexicons so that more than one answer can be considered as correct. Therefore, if the word *“grandmother”* is semantically related to *“grandma”* in the lexicon, we consider the answer *“grandma”* to be also correct. 
+
+Run the modified analogy evalution task with:
+
+```
+chmod +x modified_analogy.sh
+./modified_analogy.sh
+```
+
+This script will run experiments for all the embedding files in the `lexiconFALCON/embeddings/` directory. The results will be saved in `modified_analogy` file.
+
+
+#### Original Analogy Evaluation Task
+
+Run the original analogy evalution task with:
+
+```
+chmod +x analogy.sh
+./analogy.sh
+```
+
+This script will run experiments for all the embedding files in the `lexiconFALCON/embeddings/` directory. The results will be saved in `analogy` file.
+
+### Sentiment Analysis 
+
+Now that you have trained your model you can run the sentiment analysis by changing into the `sentiment_analysis` directory:
+
+```
+cd experiments/sentiment_analysis
+```
+
+**Edit** lines `94-95` of `sentiment_analysis.py` and select the correct directory for your train and test files.
+
+*Note that this code has minor differences with [sentiment-analysis-using-word2vec](https://www.kaggle.com/varun08/sentiment-analysis-using-word2vec) from [kaggle](https://www.kaggle.com/)*
+
+Now run sentiment analysis task with:
+
+```
+chmod +x run_sentiment.sh
+./run_sentiment.sh
+```
+
+This script will run experiments for all the embedding files in the `lexiconFALCON/embeddings/` directory. 
+
+The results for each review are stored in the `sentiment_analysis/results` directory and the overall accuracy and F1-score for each embedding file are stored in `results_sentiment.txt`.
+
+Once your experiments are completed, you can run
+
+```
+./convert_txt2csv.sh results_sentiment.txt
+```
+
+so that the results are presented in the following way:
+
+| *Filename* | *Accuracy*  | *F1-score* |
+| ---------- | ----------- | ---------- |
+| LF+PPDB    | 0.83908     | 0.837997   |
+| GloVe      | 0.83156     | 0.830208   |
+
+
+### Similarity Evaluation
