@@ -63,7 +63,7 @@ python examples/get_database_files.py -l 1 -o ../lexicons/somelexiconfile -d 100
 Change to the parent `lexiconFALCON` directory.
 
 ```
-cd ../lexiconFALCON
+cd ..
 ```
 
 Create the database schema by running
