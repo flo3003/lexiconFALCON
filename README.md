@@ -157,7 +157,7 @@ gcc -O3 glove.c -o glove -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lm
 
 ## Training
 
-Uncomment lines `21-22` from the `run_algos.sh` script.
+**Uncomment** lines `21-22` from the `run_algos.sh` script.
 
 At the end of the training the embeddings will be saved as:
 
