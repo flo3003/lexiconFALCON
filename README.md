@@ -99,6 +99,7 @@ gcc -O3 lexiconfalcon.c -o lexiconfalcon -I/usr/include/mysql -L/usr/lib/mysql -
 **Edit** the `run_algos.sh` script to fill in the parameter values and run
 
 ```
+chmod +x run_algos.sh
 ./run_algos.sh
 ```
 
@@ -109,6 +110,8 @@ embeddings/LF_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epoch
 ```
 
 And the error history will be saved in `log_file.txt`
+
+### Starting training from pretrained embeddings
 
 If you want to start the training from pretrained embeddings:
 
@@ -125,6 +128,7 @@ This will create the following files:
 Edit the `run_algos_pretrained.sh` script to fill in the parameter values, and run
 
 ```
+chmod +x run_algos_pretrained.sh
 ./run_algos_pretrained.sh
 ```
 
