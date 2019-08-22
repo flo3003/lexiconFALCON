@@ -231,10 +231,11 @@ The results for each review are stored in the `sentiment_analysis/results` direc
 Once your experiments are completed, you can run
 
 ```
+chmod + convert_txt2csv.sh
 ./convert_txt2csv.sh results_sentiment.txt
 ```
 
-so that the results are presented in the following way:
+so that the results are saved in `results_sentiment.csv` as follows:
 
 | *Filename* | *Accuracy*  | *F1-score* |
 | ---------- | ----------- | ---------- |
@@ -243,3 +244,17 @@ so that the results are presented in the following way:
 
 
 ### Similarity Evaluation
+
+Now that you have trained your model you can run the similarity evaluation tasks by changing into the `similarity_evaluation` directory:
+
+```
+cd experiments/similarity_evaluation
+```
+
+
+Now you can run the similarity evaluation task with:
+
+```
+chmod +x run_similarity.sh
+./run_similarity.sh
+```
