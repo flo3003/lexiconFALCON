@@ -94,8 +94,8 @@ def getCleanReviews(reviews):
 if __name__ == '__main__':
 
     # Read data from files
-    train = pd.read_csv( os.path.join(os.path.dirname(__file__), 'imdb_data', 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
-    test = pd.read_csv(os.path.join(os.path.dirname(__file__), 'imdb_data', 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
+    train = pd.read_csv( os.path.join(os.path.dirname(__file__), 'data', 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
+    test = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
 
     #Data Leak
     test["sentiment"] = test["id"].map(lambda x: 1 if int(x.strip('"').split("_")[1]) >= 5 else 0)
