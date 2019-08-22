@@ -41,7 +41,7 @@ python examples/get_database_files.py -c /path/to/some/corpustextfile -o ../lexi
 ```
 The argument `-d` refers to the embedding dimensions. The default is 100. 
 
-`corpustextfile` can be any plain text file (with words being separated by space) with punctuation or not. `somelexiconfile` should have the format of the files in the lexicon directory of this repo. For your convenience you may actually use anyone of those in the above command since tables with the same name will be created by default in the database schema.
+`corpustextfile` can be any plain text file (with words being separated by space) with punctuation or not. `somelexiconfile` should be any of the files found in the `lexicons` directory of this repo.
 
 The following files will be created:
 - `coo_matrix.csv` which contains the co-occurrence matrix of `corpustextfile` 
