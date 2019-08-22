@@ -13,4 +13,4 @@ echo | tee -a results_sentiment.txt 2>&1
 done
 }
 
-ls -1 ../../embeddings/* | run_me
+ls -1 ../../embeddings/*.txt | run_me
