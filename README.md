@@ -103,7 +103,7 @@ chmod +x run_algos.sh
 ./run_algos.sh
 ```
 
-At the end of the training the embeddings will be saved as:
+At the end of the training the embeddings will be saved in GloVe format as:
 
 ```
 embeddings/LF_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epochs*_final_error_*error*_*lexicon*.txt
@@ -115,7 +115,7 @@ And the error history will be saved in `log_file.txt`
 
 If you want to start the training from pretrained embeddings:
 
-Download pretrained embeddings (e.g. [glove.6B](http://nlp.stanford.edu/data/glove.6B.zip)) in the `lexiconFALCON` directory and run
+Download pretrained embeddings in GloVe format (e.g. [glove.6B](http://nlp.stanford.edu/data/glove.6B.zip)) in the `lexiconFALCON` directory and run
 
 ```
 chmod +x map_ids.sh
@@ -135,7 +135,7 @@ chmod +x run_algos_pretrained.sh
 
 *Note that the parameter `emb_file` in `run_algos_pretrained.sh` should be the `input_files/pretrainedembeddingsfile_weights.txt` file.*
 
-At the end of the training the embeddings will be saved as:
+At the end of the training the embeddings will be saved in GloVe format as:
 
 ```
 embeddings/LF_pretrained_embeddings_dP_*dP_value*_xi_*xi_value*_num_epochs_*number_of_epochs*_final_error_*error*_*lexicon*.txt
