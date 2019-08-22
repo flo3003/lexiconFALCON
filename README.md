@@ -126,7 +126,7 @@ This will create the following files:
 - `input_files/pretrainedembeddingsfile_weights.txt` which contains only the words' vectors (witout the actual word in the first column)
 - `input_files/mapped_ids.txt` which maps the indices of the vocabulary words to the indices of the corresponding words in the pretrained vector file. For example word "the" has index "3" in the vocabulary and index "56" in the pretrained vector file. The mapping file maps 3 to 56.
 
-Edit the `run_algos_pretrained.sh` script to fill in the parameter values, and run
+**Edit** the `run_algos_pretrained.sh` script to fill in the parameter values, and run
 
 ```
 chmod +x run_algos_pretrained.sh
