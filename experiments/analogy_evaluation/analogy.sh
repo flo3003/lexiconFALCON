@@ -18,4 +18,4 @@ rm new_$fbname.txt imported_new_$fbname.model
 done
 }
 
-ls -1 ../../embeddings/* | larger_mv
+ls -1 ../../embeddings/*.txt | larger_mv
