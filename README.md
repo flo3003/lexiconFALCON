@@ -37,7 +37,7 @@ pip install -e .
 In the glove-python directory run
 
 ```
-python examples/get_database_files.py -c /path/to/some/corpustextfile -o /path/to/somelexiconfile -d 100
+python examples/get_database_files.py -c /path/to/some/corpustextfile -o ../lexicons/somelexiconfile -d 100
 ```
 The argument `-d` refers to the embedding dimensions. The default is 100. 
 
@@ -53,7 +53,7 @@ The following files will be created:
 If you need to construct **only** the `somelexiconfile.csv` file from previously saved corpus and glove models then run
 
 ```
-python examples/get_database_files.py -l 1 -o /path/to/somelexiconfile -d 100
+python examples/get_database_files.py -l 1 -o ../lexicons/somelexiconfile -d 100
 ```
 
 *Note that every time you run this command the `random_initial_vectors.txt` file will change.*
